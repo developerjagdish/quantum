@@ -8,7 +8,6 @@ type PriceCardProps = {
   features: string[];
   ctaLabel: string;
   featured?: boolean;
-  customPrice?: boolean;
 };
 
 export default function PriceCard({
@@ -19,7 +18,6 @@ export default function PriceCard({
   features,
   ctaLabel,
   featured = false,
-  customPrice = false,
 }: PriceCardProps) {
   return (
     <div
@@ -39,11 +37,7 @@ export default function PriceCard({
       <p className="mt-1.5 text-[15px] text-white/55">{tagline}</p>
 
       <div className="mt-7 flex items-end gap-1.5">
-        <span
-          className={`text-[44px] font-semibold leading-none ${
-            customPrice ? "text-violet-bright" : "text-violet-bright"
-          }`}
-        >
+        <span className="text-[44px] font-semibold leading-none text-violet-bright">
           {price}
         </span>
         <span className="mb-1 text-[15px] text-white/50">{period}</span>

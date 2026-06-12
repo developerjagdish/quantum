@@ -1,3 +1,5 @@
+import CountUp from "@/components/anim/CountUp";
+
 const stats = [
   { value: "98%", label: "Uptime" },
   { value: "10x", label: "Faster Growth" },
@@ -15,7 +17,7 @@ export default function StatsBar() {
             className="flex flex-col items-center px-6 py-7 text-center"
           >
             <span className="text-[34px] font-semibold leading-none text-violet-bright">
-              {stat.value}
+              <CountUp value={stat.value} />
             </span>
             <span className="mt-2.5 text-[14px] text-white/55">{stat.label}</span>
           </div>

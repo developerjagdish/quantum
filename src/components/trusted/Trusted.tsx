@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import ReviewCard from "./ReviewCard";
+import Reveal from "@/components/anim/Reveal";
+import CountUp from "@/components/anim/CountUp";
 
 const reviews = [
   {
@@ -82,6 +84,7 @@ export default function Trusted() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 lg:px-10">
+        <Reveal as="div" stagger>
         {/* Header */}
         <div className="flex justify-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
@@ -103,16 +106,17 @@ export default function Trusted() {
         <p className="mx-auto mt-6 max-w-md text-center text-[17px] leading-relaxed text-white/65">
           Join thousands of teams building and scaling with Quantum every day.
         </p>
+        </Reveal>
 
         {/* Reviews */}
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <Reveal as="div" stagger className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
           {reviews.map((review) => (
             <ReviewCard key={review.name} {...review} />
           ))}
-        </div>
+        </Reveal>
 
         {/* Stats bar */}
-        <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md">
+        <Reveal className="mt-8 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md">
           <div className="grid grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/10">
             {stats.map((stat) => (
               <div key={stat.label} className="flex items-center gap-4 px-8 py-8">
@@ -121,17 +125,17 @@ export default function Trusted() {
                 </span>
                 <div>
                   <p className="text-[26px] font-semibold leading-none text-violet-bright">
-                    {stat.value}
+                    <CountUp value={stat.value} />
                   </p>
                   <p className="mt-2 text-[14px] text-white/55">{stat.label}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
         {/* CTA banner */}
-        <div className="relative mt-8 overflow-hidden rounded-2xl border border-white/10 bg-background">
+        <Reveal className="relative mt-8 overflow-hidden rounded-2xl border border-white/10 bg-background">
           <Image
             src="/photo/contact.jpg"
             alt=""
@@ -161,7 +165,7 @@ export default function Trusted() {
               </span>
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

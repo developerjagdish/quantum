@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Float from "@/components/anim/Float";
 
 type FeatureCalloutProps = {
   icon: ReactNode;
@@ -6,6 +7,7 @@ type FeatureCalloutProps = {
   description: string;
   className?: string;
   align?: "left" | "right";
+  floatDelay?: number;
 };
 
 export default function FeatureCallout({
@@ -14,9 +16,15 @@ export default function FeatureCallout({
   description,
   className = "",
   align = "left",
+  floatDelay = 0,
 }: FeatureCalloutProps) {
   return (
-    <div className={`absolute hidden max-w-[170px] flex-col gap-2.5 xl:flex ${className}`}>
+    <Float
+      amplitude={12}
+      duration={5}
+      delay={floatDelay}
+      className={`absolute hidden max-w-[170px] flex-col gap-2.5 xl:flex ${className}`}
+    >
       <span
         className={`flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white shadow-[0_2px_12px_rgba(0,0,0,0.6)] backdrop-blur-md ${
           align === "right" ? "self-end" : ""
@@ -32,6 +40,6 @@ export default function FeatureCallout({
           {description}
         </p>
       </div>
-    </div>
+    </Float>
   );
 }

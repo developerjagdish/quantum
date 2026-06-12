@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Reveal from "@/components/anim/Reveal";
 
 const methods: { title: string; detail: string; icon: ReactNode }[] = [
   {
@@ -44,7 +45,7 @@ const methods: { title: string; detail: string; icon: ReactNode }[] = [
 
 export default function ContactMethods() {
   return (
-    <div className="flex flex-col gap-4">
+    <Reveal as="div" stagger className="flex flex-col gap-4">
       {methods.map((m) => (
         <a
           key={m.title}
@@ -63,6 +64,6 @@ export default function ContactMethods() {
           </svg>
         </a>
       ))}
-    </div>
+    </Reveal>
   );
 }

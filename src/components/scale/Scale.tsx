@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import GrowthCard from "./GrowthCard";
 import Testimonial from "./Testimonial";
+import Reveal from "@/components/anim/Reveal";
+import CountUp from "@/components/anim/CountUp";
 
 const stats = [
   {
@@ -64,7 +66,7 @@ export default function Scale() {
       <div className="relative z-10 mx-auto flex max-w-[1320px] flex-col px-6 py-24 lg:px-10 lg:py-28">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left */}
-          <div className="max-w-xl">
+          <Reveal as="div" stagger className="max-w-xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-violet-bright">
                 <path d="M7 1V13M1 7H13M2.8 2.8L11.2 11.2M11.2 2.8L2.8 11.2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
@@ -93,7 +95,7 @@ export default function Scale() {
                     {stat.icon}
                   </span>
                   <p className="mt-4 text-[26px] font-semibold leading-none text-violet-bright">
-                    {stat.value}
+                    <CountUp value={stat.value} />
                   </p>
                   <p className="mt-2 text-[14px] text-white/55">{stat.label}</p>
                 </div>
@@ -114,18 +116,18 @@ export default function Scale() {
                 </span>
               </Link>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right — growth card */}
-          <div className="flex justify-center lg:justify-end">
+          <Reveal className="flex justify-center lg:justify-end">
             <GrowthCard />
-          </div>
+          </Reveal>
         </div>
 
         {/* Testimonial */}
-        <div className="mt-20">
+        <Reveal className="mt-20">
           <Testimonial />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import FeatureCard from "./FeatureCard";
 import TrustedBanner from "./TrustedBanner";
+import Reveal from "@/components/anim/Reveal";
+import Float from "@/components/anim/Float";
 
 const features = [
   {
@@ -54,24 +56,29 @@ export default function Features() {
     <section className="relative overflow-hidden bg-background py-28">
       {/* Decorative asteroids — background layer */}
       <div className="pointer-events-none absolute inset-0 select-none" aria-hidden>
-        <Image
-          src="/photo/astro1.png"
-          alt=""
-          width={400}
-          height={267}
-          priority={false}
-          className="absolute left-[-3%] top-[6%] w-[230px] brightness-[0.55] saturate-[0.85] md:w-[320px]"
-        />
-        <Image
-          src="/photo/astro2.png"
-          alt=""
-          width={200}
-          height={133}
-          className="absolute right-[7%] top-[10%] w-[90px] brightness-[0.5] saturate-[0.8] md:w-[125px]"
-        />
+        <Float amplitude={22} duration={6} className="absolute left-[-3%] top-[6%]">
+          <Image
+            src="/photo/astro1.png"
+            alt=""
+            width={400}
+            height={267}
+            priority={false}
+            className="w-[230px] brightness-[0.55] saturate-[0.85] md:w-[320px]"
+          />
+        </Float>
+        <Float amplitude={-16} duration={5} delay={0.6} rotate={4} className="absolute right-[7%] top-[10%]">
+          <Image
+            src="/photo/astro2.png"
+            alt=""
+            width={200}
+            height={133}
+            className="w-[90px] brightness-[0.5] saturate-[0.8] md:w-[125px]"
+          />
+        </Float>
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 lg:px-10">
+        <Reveal as="div" stagger>
         {/* Eyebrow */}
         <div className="flex justify-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
@@ -95,29 +102,37 @@ export default function Features() {
           Quantum combines cutting-edge AI with scalable infrastructure so your
           business can grow without limits.
         </p>
+        </Reveal>
 
         {/* Cards */}
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal as="div" stagger className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
             <FeatureCard key={feature.title} {...feature} />
           ))}
-        </div>
+        </Reveal>
 
         {/* Trusted banner */}
-        <div className="mt-8">
+        <Reveal className="mt-8">
           <TrustedBanner />
-        </div>
+        </Reveal>
       </div>
 
       {/* Bottom asteroid — foreground layer (above content), softly blurred */}
-      <Image
-        src="/photo/astro3.png"
-        alt=""
-        width={420}
-        height={280}
-        aria-hidden
-        className="pointer-events-none absolute bottom-[1%] right-[-4%] z-20 w-[220px] select-none blur-[2px] brightness-[0.5] saturate-[0.8] md:w-[360px]"
-      />
+      <Float
+        amplitude={18}
+        duration={7}
+        rotate={-3}
+        className="pointer-events-none absolute bottom-[1%] right-[-4%] z-20 select-none"
+      >
+        <Image
+          src="/photo/astro3.png"
+          alt=""
+          width={420}
+          height={280}
+          aria-hidden
+          className="w-[220px] blur-[2px] brightness-[0.5] saturate-[0.8] md:w-[360px]"
+        />
+      </Float>
     </section>
   );
 }

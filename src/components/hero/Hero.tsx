@@ -2,6 +2,7 @@ import Link from "next/link";
 import FeatureCallout from "./FeatureCallout";
 import TrustedBy from "./TrustedBy";
 import StatsBar from "./StatsBar";
+import Reveal from "@/components/anim/Reveal";
 
 export default function Hero() {
   return (
@@ -80,7 +81,7 @@ export default function Hero() {
 
       {/* Main content */}
       <div className="relative z-20 mx-auto flex min-h-screen max-w-[1320px] flex-col px-6 pb-10 pt-32 lg:px-10 lg:pt-36">
-        <div className="flex max-w-xl flex-1 flex-col justify-center">
+        <Reveal as="div" trigger="load" stagger y={34} className="flex max-w-xl flex-1 flex-col justify-center">
           {/* Eyebrow badge */}
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-violet-bright">
@@ -134,12 +135,12 @@ export default function Hero() {
           <div className="mt-16">
             <TrustedBy />
           </div>
-        </div>
+        </Reveal>
 
         {/* Stats bar */}
-        <div className="mt-10">
+        <Reveal trigger="load" delay={0.5} className="mt-10">
           <StatsBar />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

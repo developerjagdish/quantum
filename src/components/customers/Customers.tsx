@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TestimonialColumns from "./TestimonialColumns";
 import ImpactStats from "./ImpactStats";
+import Reveal from "@/components/anim/Reveal";
 
 export default function Customers() {
   return (
@@ -20,7 +21,7 @@ export default function Customers() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 py-24 lg:px-10 lg:py-28">
         {/* Header */}
-        <div className="max-w-xl">
+        <Reveal as="div" stagger className="max-w-xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-violet-bright">
               <path d="M7 1V13M1 7H13M2.8 2.8L11.2 11.2M11.2 2.8L2.8 11.2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
@@ -54,17 +55,17 @@ export default function Customers() {
               </span>
             </Link>
           </div>
-        </div>
+        </Reveal>
 
         {/* Testimonials */}
-        <div className="mt-20">
+        <Reveal as="div" stagger className="mt-20">
           <TestimonialColumns />
-        </div>
+        </Reveal>
 
         {/* Impact stats */}
-        <div className="mt-14">
+        <Reveal className="mt-14">
           <ImpactStats />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

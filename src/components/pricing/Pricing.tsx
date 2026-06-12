@@ -1,6 +1,7 @@
 import Image from "next/image";
 import PriceCard from "./PriceCard";
 import Faq from "./Faq";
+import Reveal from "@/components/anim/Reveal";
 
 const plans = [
   {
@@ -37,7 +38,6 @@ const plans = [
     price: "Custom",
     period: "/year",
     ctaLabel: "Contact Sales",
-    customPrice: true,
     features: [
       "Unlimited Instances",
       "Unlimited Storage",
@@ -65,6 +65,7 @@ export default function Pricing() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 lg:px-10">
+        <Reveal as="div" stagger>
         {/* Header */}
         <div className="flex justify-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
@@ -85,18 +86,19 @@ export default function Pricing() {
           Start for free. Scale when you&apos;re ready. No hidden fees. Cancel
           anytime.
         </p>
+        </Reveal>
 
         {/* Plans */}
-        <div className="mt-20 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <Reveal as="div" stagger className="mt-20 grid grid-cols-1 gap-6 lg:grid-cols-3">
           {plans.map((plan) => (
             <PriceCard key={plan.name} {...plan} />
           ))}
-        </div>
+        </Reveal>
 
         {/* FAQ */}
-        <div className="mt-8">
+        <Reveal className="mt-8">
           <Faq />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

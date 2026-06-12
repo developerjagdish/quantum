@@ -1,3 +1,5 @@
+import CountUp from "@/components/anim/CountUp";
+
 const stats = [
   {
     value: "2,000+",
@@ -65,7 +67,7 @@ export default function ImpactStats() {
           </span>
           <div>
             <p className="text-[26px] font-semibold leading-none text-violet-bright">
-              {stat.value}
+              <CountUp value={stat.value} />
             </p>
             <p className="mt-2 text-[14px] text-white/55">{stat.label}</p>
           </div>

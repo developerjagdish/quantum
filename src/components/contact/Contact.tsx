@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ContactMethods from "./ContactMethods";
 import Footer from "./Footer";
+import Reveal from "@/components/anim/Reveal";
 
 const inputClass =
   "w-full rounded-xl border border-white/12 bg-white/5 px-4 py-3.5 text-[15px] text-white placeholder:text-white/40 focus:border-violet/50 focus:outline-none";
@@ -22,7 +23,7 @@ export default function Contact() {
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left — heading + form */}
-          <div>
+          <Reveal as="div" stagger>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-violet-bright">
                 <path d="M7 1V13M1 7H13M2.8 2.8L11.2 11.2M11.2 2.8L2.8 11.2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
@@ -60,7 +61,7 @@ export default function Contact() {
                 </svg>
               </button>
             </form>
-          </div>
+          </Reveal>
 
           {/* Right — contact methods */}
           <div className="lg:pt-20">
@@ -69,9 +70,9 @@ export default function Contact() {
         </div>
 
         {/* Footer */}
-        <div className="mt-24">
+        <Reveal className="mt-24">
           <Footer />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

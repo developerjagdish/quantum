@@ -1,6 +1,8 @@
 import Image from "next/image";
 import FeatureCard from "@/components/features/FeatureCard";
 import CtaBanner from "./CtaBanner";
+import Reveal from "@/components/anim/Reveal";
+import Float from "@/components/anim/Float";
 
 const cards = [
   {
@@ -58,23 +60,28 @@ export default function Developers() {
     <section className="relative overflow-hidden bg-background py-28">
       {/* Decorative asteroids */}
       <div className="pointer-events-none absolute inset-0 select-none" aria-hidden>
-        <Image
-          src="/photo/astro4.png"
-          alt=""
-          width={520}
-          height={760}
-          className="absolute left-[-6%] top-[8%] w-[230px] brightness-[0.8] saturate-[0.9] md:w-[300px]"
-        />
-        <Image
-          src="/photo/astro3.png"
-          alt=""
-          width={420}
-          height={280}
-          className="absolute right-[-3%] top-[1%] w-[200px] brightness-90 saturate-[0.95] md:w-[300px]"
-        />
+        <Float amplitude={20} duration={6.5} rotate={3} className="absolute left-[-6%] top-[8%]">
+          <Image
+            src="/photo/astro4.png"
+            alt=""
+            width={520}
+            height={760}
+            className="w-[230px] brightness-[0.8] saturate-[0.9] md:w-[300px]"
+          />
+        </Float>
+        <Float amplitude={-18} duration={7.5} delay={0.8} rotate={-3} className="absolute right-[-3%] top-[1%]">
+          <Image
+            src="/photo/astro3.png"
+            alt=""
+            width={420}
+            height={280}
+            className="w-[200px] brightness-90 saturate-[0.95] md:w-[300px]"
+          />
+        </Float>
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 lg:px-10">
+        <Reveal as="div" stagger>
         {/* Eyebrow */}
         <div className="flex justify-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 backdrop-blur-sm">
@@ -99,18 +106,19 @@ export default function Developers() {
           Quantum gives you the tools, performance, and flexibility to ship
           faster and scale further.
         </p>
+        </Reveal>
 
         {/* Cards */}
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal as="div" stagger className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((card) => (
             <FeatureCard key={card.title} iconShape="circle" {...card} />
           ))}
-        </div>
+        </Reveal>
 
         {/* CTA banner */}
-        <div className="mt-8">
+        <Reveal className="mt-8">
           <CtaBanner />
-        </div>
+        </Reveal>
       </div>
     </section>
   );
